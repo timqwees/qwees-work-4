@@ -54,4 +54,22 @@ class Functions
     {
         Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
     }
+    
+    # Страница портфолио || Portfolio page
+    public function on_Portfolio($path = '/public/pages/portfolio/index.php')
+    {
+        Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
+
+    # Страница услуги || Services page
+    public function on_Services($path = '/public/pages/services/index.php')
+    {
+        Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
+
+    # Страница цены || Prices page
+    public function on_Prices($path = '/public/pages/prices/index.php')
+    {
+        Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
 }
