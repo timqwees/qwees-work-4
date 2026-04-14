@@ -238,7 +238,7 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1484154218962-841dd1904471?w=900&h=520&fit=crop"
+                                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&h=520&fit=crop"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
@@ -252,10 +252,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
@@ -311,10 +313,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
@@ -370,10 +374,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
@@ -429,10 +435,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
@@ -488,10 +496,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
@@ -547,10 +557,12 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div
-                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-next !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-right text-xs"></i>
                                 </div>
                                 <div
-                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 after:!text-sm">
+                                    class="swiper-button-prev !w-8 !h-8 !bg-white/90 !rounded-full !text-blue-700 !flex !items-center !justify-center after:!content-none">
+                                    <i class="fas fa-chevron-left text-xs"></i>
                                 </div>
                             </div>
                         </div>
