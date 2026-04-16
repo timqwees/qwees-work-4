@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,28 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Портфолио ремонтов | Реальные проекты квартир и домов</title>
+    <title>Портфолио ремонтов — реальные проекты |
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>
+    </title>
     <meta name="description"
-        content="Наше портфолио ремонтов: реальные проекты квартир и домов, фото, планировки, метраж и примеры выполненных работ в Москве и области.">
-    <meta name="keywords" content="портфолио, проекты ремонта, ремонт квартир, ремонт под ключ, фото ремонта, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Портфолио выполненных ремонтов квартир и домов. Фото «до» и «после», планировки, сроки и бюджеты реальных проектов.">
+    <meta name="keywords" content="портфолио ремонта, фото ремонта, проекты квартир, ремонт под ключ, примеры работ">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/portfolio/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/portfolio'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Портфолио ремонтов | Реальные проекты квартир и домов">
-    <meta property="og:description"
-        content="Наше портфолио ремонтов: реальные проекты квартир и домов, фото, планировки, метраж и примеры выполненных работ в Москве и области.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/portfolio/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-portfolio.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="Портфолио ремонтов — реальные проекты | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta property="og:description"
+        content="Портфолио выполненных ремонтов квартир и домов. Фото «до» и «после», планировки, сроки и бюджеты.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/portfolio'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Портфолио ремонтов | Реальные проекты квартир и домов">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="Портфолио ремонтов — реальные проекты | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta name="twitter:description"
+        content="Портфолио выполненных ремонтов квартир и домов. Фото «до» и «после», планировки, сроки.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
     <meta name="twitter:description"
         content="Наше портфолио ремонтов: реальные проекты квартир и домов, фото, планировки, метраж и примеры выполненных работ в Москве и области.">
     <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-portfolio.jpg">
@@ -175,7 +192,7 @@
                                 ориентируйтесь по цене и срокам.</p>
 
                             <div class="mt-6">
-                                <a href="/order"
+                                <a href="/calculator"
                                     class="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow hover:bg-orange-600 transition">
                                     Рассчитать стоимость ремонта
                                 </a>
@@ -183,8 +200,8 @@
                         </div>
 
                         <div class="lg:col-span-5 relative min-h-48">
-                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&h=700&fit=crop"
-                                class="w-full h-full object-cover" alt="Портфолио">
+                            <img src="/public/assets/images/pages/portfolio/img.jpg" class="w-full h-full object-cover"
+                                alt="Портфолио">
                             <div class="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent"></div>
                         </div>
                     </div>
@@ -193,7 +210,6 @@
                 <div class="mt-6 bg-[#F3F6FB] rounded-2xl border border-gray-200 shadow-sm p-5 md:p-6">
                     <div class="flex items-center justify-between gap-4 flex-wrap">
                         <div class="text-sm font-semibold text-gray-800">Фильтры</div>
-                        <div class="text-sm text-gray-500">Найдено 124 проекта</div>
                     </div>
 
                     <div class="mt-4 flex flex-wrap gap-2" id="filterContainer">
@@ -201,33 +217,27 @@
                             class="filter-btn h-10 px-4 rounded-md bg-blue-700 text-white text-sm font-semibold transition">Все
                             проекты</button>
                         <button data-filter="studio"
-                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Студии</button>
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Студии</button>
                         <button data-filter="1room"
-                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">1-комнатные</button>
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">1-комнатные</button>
                         <button data-filter="2room"
-                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">2-комнатные</button>
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">2-комнатные</button>
                         <button data-filter="new"
-                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Новостройка</button>
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Новостройка</button>
                         <button data-filter="secondary"
-                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Вторичка</button>
-                    </div>
-
-                    <div class="mt-3 flex flex-wrap gap-2">
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Евроремонт</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Косметический</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Дизайнерский</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Классический</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Современный</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">Скандинавский</button>
-                        <button
-                            class="h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition inline-flex items-center gap-2">Ещё
-                            <i class="fas fa-chevron-down text-xs"></i></button>
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Вторичка</button>
+                        <button data-filter="Евроремонт"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Евроремонт</button>
+                        <button data-filter="Косметический"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Косметический</button>
+                        <button data-filter="Дизайнерский"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Дизайнерский</button>
+                        <button data-filter="Классический"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Классический</button>
+                        <button data-filter="Современный"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Современный</button>
+                        <button data-filter="Скандинавский"
+                            class="filter-btn h-10 px-4 rounded-md bg-white border border-gray-200 text-gray-700 text-sm font-semibold transition">Скандинавский</button>
                     </div>
                 </div>
 
@@ -238,15 +248,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -299,15 +309,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -360,15 +370,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -421,15 +431,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -482,15 +492,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -543,15 +553,15 @@
                             <div class="swiper type-swiper-2 w-full h-full">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 1">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 2">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=520&fit=crop"
+                                        <img src="/public/assets/images/pages/portfolio/img.jpg"
                                             class="w-full h-full object-cover" alt="Фото 3">
                                     </div>
                                 </div>
@@ -665,12 +675,10 @@
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                             <div class="before-after-slider h-64" id="slider1">
                                 <div class="img-container after">
-                                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=520&fit=crop"
-                                        alt="После">
+                                    <img src="/public/assets/images/pages/portfolio/img.jpg" alt="После">
                                 </div>
                                 <div class="img-container before" style="width: 50%;">
-                                    <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?w=900&h=520&fit=crop"
-                                        alt="До">
+                                    <img src="/public/assets/images/pages/portfolio/img.jpg" alt="До">
                                 </div>
                                 <div class="slider-handle" style="left: 50%;">
                                     <div class="slider-handle-inner">
@@ -693,12 +701,10 @@
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                             <div class="before-after-slider h-64" id="slider2">
                                 <div class="img-container after">
-                                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=520&fit=crop"
-                                        alt="После">
+                                    <img src="/public/assets/images/pages/portfolio/img.jpg" alt="После">
                                 </div>
                                 <div class="img-container before" style="width: 50%;">
-                                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&h=520&fit=crop"
-                                        alt="До">
+                                    <img src="/public/assets/images/pages/portfolio/img.jpg" alt="До">
                                 </div>
                                 <div class="slider-handle" style="left: 50%;">
                                     <div class="slider-handle-inner">
@@ -722,14 +728,14 @@
 
                 <div class="mt-10 flex items-center justify-between">
                     <h2 class="text-2xl font-bold text-gray-900">Похожие проекты</h2>
-                    <a href="#" class="text-sm text-blue-700 hover:text-blue-800">Посмотреть всё &gt;</a>
+                    <a href="#" class="text-sm text-blue-700 hover:text-blue-800">Посмотреть всё</a>
                 </div>
 
                 <div class="mt-5 overflow-x-auto">
                     <div class="flex gap-4 min-w-max pb-2">
                         <div class="w-72 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                             <div class="relative">
-                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&h=520&fit=crop"
+                                <img src="/public/assets/images/pages/portfolio/img.jpg"
                                     class="w-full h-40 object-cover" alt="Похожий проект 1">
                                 <div
                                     class="absolute right-3 bottom-3 bg-black/55 text-white text-xs px-2 py-1 rounded-md inline-flex items-center gap-2">
@@ -771,7 +777,7 @@
 
                         <div class="w-72 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                             <div class="relative">
-                                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&h=520&fit=crop"
+                                <img src="/public/assets/images/pages/portfolio/img.jpg"
                                     class="w-full h-40 object-cover" alt="Похожий проект 2">
                                 <div
                                     class="absolute right-3 bottom-3 bg-black/55 text-white text-xs px-2 py-1 rounded-md inline-flex items-center gap-2">
@@ -813,7 +819,7 @@
 
                         <div class="w-72 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                             <div class="relative">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=520&fit=crop"
+                                <img src="/public/assets/images/pages/portfolio/img.jpg"
                                     class="w-full h-40 object-cover" alt="Похожий проект 3">
                                 <div
                                     class="absolute right-3 bottom-3 bg-black/55 text-white text-xs px-2 py-1 rounded-md inline-flex items-center gap-2">
@@ -858,16 +864,17 @@
                 <div class="mt-10 bg-gradient-to-r from-blue-800 to-blue-700 rounded-2xl p-6 md:p-8 text-white">
                     <div class="text-xl md:text-2xl font-bold">Рассчитать похожий ремонт</div>
                     <div class="mt-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                        <div class="md:col-span-7">
+                        <form action="/send/email" method="POST" class="md:col-span-7">
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <input type="tel" placeholder="+7 ___ ___-__-__"
+                                <input type="hidden" name="Наше портфолио - Рассчитать похожий ремонт" id="">
+                                <input name="теефон" type="tel" placeholder="+7 ___ ___-__-__"
                                     class="w-full px-4 py-3 rounded-lg text-gray-900 outline-none">
                                 <button
                                     class="w-full sm:w-auto px-6 py-3 rounded-lg bg-orange-500 font-semibold hover:bg-orange-600 transition whitespace-nowrap">Рассчитать
                                     стоимость</button>
                             </div>
-                        </div>
-                        <div class="md:col-span-5">
+                        </form>
+                        <div class="md:col-span-5 text-center">
                             <div class="text-sm text-blue-100">Бесплатная честная смета</div>
                             <div class="mt-2 text-sm text-blue-100">Точный расчет за 1 день</div>
                             <div class="mt-2 text-sm text-blue-100">Ответим за 5–10 минут</div>

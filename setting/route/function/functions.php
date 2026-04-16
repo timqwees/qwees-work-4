@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Setting\Route\Function;
 
@@ -54,7 +54,7 @@ class Functions
     {
         Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
     }
-    
+
     # Страница портфолио || Portfolio page
     public function on_Portfolio($path = '/public/pages/portfolio/index.php')
     {
@@ -71,5 +71,52 @@ class Functions
     public function on_Prices($path = '/public/pages/prices/index.php')
     {
         Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
+
+    # Страница блог || Blog page
+    public function on_Blog($path = '/public/pages/blog/index.php')
+    {
+        Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
+
+    # Страница калькулятор || Calculator page
+    public function on_Calculator($path = '/public/pages/calculator/index.php')
+    {
+        Routes::auto_element(dirname(__DIR__, 3) . $path, get_defined_vars());
+    }
+
+    // siteInfo
+    public static function site(): array
+    {
+        return [
+            'url' => '',
+            'phone' => '+79777777777',
+            'email' => 'info@pkvartira.ru',
+            'address' => '',
+            'kartaAdress' => '',
+            'telegram' => '',
+            'whatsapp' => '',
+            'vk' => '',
+            'max' => ''
+        ];
+    }
+
+    /**
+     * @param object $data Данные письма
+     * @return void
+     */
+    public static function sendMail(object $data): void
+    {
+        $message = "Информация:\n";
+        foreach ($data as $key => $value) {
+            $message .= ucfirst($key) . ': ' . $value . "\n<br>";
+        }
+        try {
+            (new MailController())->onMail('info@pkvartira.ru', 'Заявление с сайта', $message);
+        } catch (Exception $e) {
+            error_log('Mail Error: ' . $e->getMessage());
+        }
+        if (!isset($data->both))
+            Network::onRedirect('/');
     }
 }

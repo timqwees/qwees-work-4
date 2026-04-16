@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,31 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Ремонт квартир и домов под ключ | Профессиональные услуги</title>
+    <title>
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ в Москве
+    </title>
     <meta name="description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
-    <meta name="keywords" content="ремонт квартир, ремонт под ключ, ремонт домов, отделка, строительные услуги, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Профессиональный ремонт квартир и домов под ключ в Москве. Гарантия 3 года, прозрачные цены, опытные мастера. Бесплатный выезд и смета.">
+    <meta name="keywords"
+        content="ремонт квартир, ремонт под ключ, ремонт квартир Москва, отделка квартир, дизайн интерьера">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/contact/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '')); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Ремонт квартир и домов под ключ | Профессиональные услуги">
-    <meta property="og:description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/contact/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-image.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ в Москве">
+    <meta property="og:description"
+        content="Профессиональный ремонт квартир и домов под ключ. Гарантия 3 года, прозрачные цены, бесплатный выезд и смета.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '')); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ремонт квартир и домов под ключ | Профессиональные услуги">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ в Москве">
     <meta name="twitter:description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
-    <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-image.jpg">
+        content="Профессиональный ремонт квартир и домов под ключ. Гарантия 3 года, прозрачные цены.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
 
     <!-- Дополнительные мета-теги -->
     <meta name="theme-color" content="#FF6B35">
@@ -285,10 +300,10 @@
 
                     <!-- CTA Button -->
                     <div class="text-center">
-                        <button
+                        <a href="tel:<?php echo $site['phone']; ?>"
                             class="cta-button relative bg-orange-500 text-white px-6 md:px-8 py-3 rounded-xl text-lg w-full max-w-xs md:w-auto">
                             <span class="drop-shadow-lg font-sans">Получить бесплатный расчёт</span>
-                        </button>
+                        </a>
                         <p class="text-xs md:text-sm text-gray-600 mt-3">
                             Ответим за 5 минут • Бесплатно • Без обязательств
                         </p>
@@ -309,36 +324,36 @@
                     </h2>
                 </div>
 
-                <div
+                <form action="/send/email" method="POST"
                     class="max-w-[95%] md:max-w-[80%] mx-auto flex flex-col flex-wrap md:flex-row gap-3 md:gap-4 justify-center items-center">
-                    <select id="phone"
+                    <select name="тип квартиры"
                         class="w-full max-w-[350px] px-4 pr-8 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 custom-select text-sm md:text-base">
                         <option value="" selected disabled>Выберите тип квартиры</option>
                         <option value="1 комнатная">1 комнатная</option>
                         <option value="2 комнатная">2-х комнатная</option>
                         <option value="3 комнатная">3-х комнатная</option>
                     </select>
-                    <select id="phone"
+                    <select name="площадь квартиры"
                         class="w-full max-w-[350px] px-4 pr-8 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 custom-select text-sm md:text-base">
                         <option value="" selected disabled>Площадь квартиры, м²</option>
                         <option value="1 комнатная">1 комнатная</option>
                         <option value="2 комнатная">2-х комнатная</option>
                         <option value="3 комнатная">3-х комнатная</option>
                     </select>
-                    <select id="phone"
+                    <select name="Тип квартиры"
                         class="w-full max-w-[350px] px-4 pr-8 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 custom-select text-sm md:text-base">
                         <option value="" selected disabled>Тип ремонта</option>
                         <option value="1 комнатная">1 комнатная</option>
                         <option value="2 комнатная">2-х комнатная</option>
                         <option value="3 комнатная">3-х комнатная</option>
                     </select>
-                    <input id="phone" placeholder=" Ваш телефон" type="tel" maxlength="12"
+                    <input name="телефон" placeholder="Ваш телефон" type="tel" maxlength="12"
                         class="w-full max-w-[350px] px-4 pr-8 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm md:text-base">
                     <button
                         class="cta-button relative bg-orange-500 text-white px-6 md:px-8 py-3 rounded-xl text-base md:text-xl w-full max-w-[350px] md:w-auto">
                         <span class="drop-shadow-lg font-sans">Расчитать стоимость</span>
                     </button>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -412,7 +427,7 @@
                             <div
                                 class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition h-full">
                                 <div class="relative">
-                                    <img data-src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                         alt="Черновой ремонт" class="lazy w-full h-36 md:h-48 object-cover">
                                     <div
                                         class="absolute top-2 md:top-4 right-2 md:right-4 bg-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-semibold">
@@ -445,7 +460,7 @@
                             <div
                                 class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition h-full">
                                 <div class="relative">
-                                    <img data-src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                         alt="Чистовой ремонт" class="lazy w-full h-36 md:h-48 object-cover">
                                     <div
                                         class="absolute top-2 md:top-4 right-2 md:right-4 bg-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-semibold">
@@ -487,7 +502,7 @@
                                 class="bg-white border border-orange-500 border-2 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition relative h-full">
                                 <div class="absolute bg-orange-100 h-full w-full opacity-20"></div>
                                 <div class="relative">
-                                    <img data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                         alt="Ремонт под ключ" class="lazy w-full h-36 md:h-48 object-cover">
                                     <div
                                         class="absolute top-2 md:top-4 right-2 md:right-4 bg-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-semibold">
@@ -518,7 +533,7 @@
                         <li class="swiper-slide">
                             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
                                 <div class="relative">
-                                    <img data-src="https://avatars.mds.yandex.net/i?id=0ae54d0d7e84f3eae53d5ccef3163ae3905b9182-5527569-images-thumbs&n=13"
+                                    <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                         alt="Косметический ремонт" class="lazy w-full h-48 object-cover">
                                     <div
                                         class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -548,7 +563,7 @@
                         <li class="swiper-slide">
                             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
                                 <div class="relative">
-                                    <img data-src="https://avatars.yandex.net/get-music-content/9838169/5e0d2b83.a.27150900-1/m1000x1000"
+                                    <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                         alt="Косметический ремонт" class="lazy w-full h-48 object-cover">
                                     <div
                                         class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -587,58 +602,58 @@
                 <div
                     class="flex flex-wrap gap-3 md:gap-4 justify-center max-w-[95%] md:max-w-[90%] mx-auto text-sm md:text-xl">
                     <!-- Button 1 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-building text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт квартир в новостройке</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
 
                     <!-- Button 2 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-home text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт во вторичке</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
 
                     <!-- Button 3 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-couch text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт студии</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
 
                     <!-- Button 4 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-door-open text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт 1-комнатной</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
 
                     <!-- Button 5 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-bed text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт 2-комнатной</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
 
                     <!-- Button 6 -->
-                    <button
+                    <a href="/"
                         class="flex items-center gap-2 md:gap-3 bg-white border border-gray-300 rounded-lg px-3 py-2 md:px-4 md:py-3 hover:bg-gray-50 transition shadow-sm w-full sm:w-auto justify-center"
                         style="width: fit-content;">
                         <i class="fas fa-house-user text-orange-500 text-sm md:text-base"></i>
                         <span class="text-gray-800 font-medium">Ремонт 3-комнатной</span>
                         <i class="fas fa-arrow-right text-orange-400 text-sm md:text-base"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -652,7 +667,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
                         Наши последние работы
                     </h2>
-                    <a href="#"
+                    <a href="/portfolio"
                         class="block md:absolute right-0 text-blue-600 hover:text-blue-700 transition font-semibold flex items-center gap-2">
                         Смотреть всё портфолио
                         <i class="fas fa-arrow-right"></i>
@@ -671,7 +686,7 @@
                                     <!-- Before/After Images -->
                                     <div class="grid grid-cols-2">
                                         <div class="relative border border-r-2 border-white">
-                                            <img data-src="https://avatars.mds.yandex.net/i?id=fca7cb34399903484f6efce037992610_l-5875681-images-thumbs&n=13"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="До" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -679,7 +694,7 @@
                                             </div>
                                         </div>
                                         <div class="relative">
-                                            <img data-src="https://media-cdn.tripadvisor.com/media/photo-s/28/96/3c/a4/shared-pool.jpg"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="После" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-green-600 bg-opacity-90 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -735,7 +750,7 @@
                                     <!-- Before/After Images -->
                                     <div class="grid grid-cols-2">
                                         <div class="relative border border-r-2 border-white">
-                                            <img data-src="https://avatars.mds.yandex.net/i?id=fca7cb34399903484f6efce037992610_l-5875681-images-thumbs&n=13"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="До" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -743,7 +758,7 @@
                                             </div>
                                         </div>
                                         <div class="relative">
-                                            <img data-src="https://media-cdn.tripadvisor.com/media/photo-s/28/96/3c/a4/shared-pool.jpg"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="После" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-green-600 bg-opacity-90 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -799,7 +814,7 @@
                                     <!-- Before/After Images -->
                                     <div class="grid grid-cols-2">
                                         <div class="relative border border-r-2 border-white">
-                                            <img data-src="https://avatars.mds.yandex.net/i?id=fca7cb34399903484f6efce037992610_l-5875681-images-thumbs&n=13"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="До" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -807,7 +822,7 @@
                                             </div>
                                         </div>
                                         <div class="relative">
-                                            <img data-src="https://media-cdn.tripadvisor.com/media/photo-s/28/96/3c/a4/shared-pool.jpg"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="После" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-green-600 bg-opacity-90 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -863,7 +878,7 @@
                                     <!-- Before/After Images -->
                                     <div class="grid grid-cols-2">
                                         <div class="relative border border-r-2 border-white">
-                                            <img data-src="https://avatars.mds.yandex.net/i?id=fca7cb34399903484f6efce037992610_l-5875681-images-thumbs&n=13"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="До" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -871,7 +886,7 @@
                                             </div>
                                         </div>
                                         <div class="relative">
-                                            <img data-src="https://media-cdn.tripadvisor.com/media/photo-s/28/96/3c/a4/shared-pool.jpg"
+                                            <img data-src="/public/assets/images/pages/main/виды_работы/img.webp"
                                                 alt="После" class="lazy w-full h-48 object-cover">
                                             <div
                                                 class="absolute top-2 left-2 bg-green-600 bg-opacity-90 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -1072,18 +1087,18 @@
                         <!-- slide 1 -->
                         <div class="swiper-slide">
                             <div class="relative group">
-                                <img data-src="https://avatars.mds.yandex.net/i?id=9be9930d76375601a91d2adabbeeac41_l-4390197-images-thumbs&n=13"
-                                    alt="Проект 1" class="lazy w-full h-96 object-cover rounded-lg">
+                                <img data-src="/public/assets/images/pages/main/виды_работы/img2.webp" alt="Проект 1"
+                                    class="lazy w-full h-96 object-cover rounded-lg">
                                 <!-- hover background -->
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition rounded-lg">
                                     <div class="text-white text-center">
                                         <h3 class="text-2xl font-bold mb-2">Современная гостиная</h3>
                                         <p class="mb-4">Площадь: 35 м²</p>
-                                        <button
+                                        <a href=""
                                             class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
                                             Смотреть проект
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1091,17 +1106,17 @@
 
                         <div class="swiper-slide">
                             <div class="relative group">
-                                <img data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="Проект 2" class="lazy w-full h-96 object-cover rounded-lg">
+                                <img data-src="/public/assets/images/pages/main/виды_работы/img2.webp" alt="Проект 2"
+                                    class="lazy w-full h-96 object-cover rounded-lg">
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition rounded-lg">
                                     <div class="text-white text-center">
                                         <h3 class="text-2xl font-bold mb-2">Кухня-гостиная</h3>
                                         <p class="mb-4">Площадь: 42 м²</p>
-                                        <button
+                                        <a href=""
                                             class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
                                             Смотреть проект
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1109,17 +1124,17 @@
 
                         <div class="swiper-slide">
                             <div class="relative group">
-                                <img data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="Проект 3" class="lazy w-full h-96 object-cover rounded-lg">
+                                <img data-src="/public/assets/images/pages/main/виды_работы/img2.webp" alt="Проект 3"
+                                    class="lazy w-full h-96 object-cover rounded-lg">
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition rounded-lg">
                                     <div class="text-white text-center">
                                         <h3 class="text-2xl font-bold mb-2">Ванная комната</h3>
                                         <p class="mb-4">Площадь: 12 м²</p>
-                                        <button
+                                        <a href=""
                                             class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
                                             Смотреть проект
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1127,17 +1142,17 @@
 
                         <div class="swiper-slide">
                             <div class="relative group">
-                                <img data-src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="Проект 4" class="lazy w-full h-96 object-cover rounded-lg">
+                                <img data-src="/public/assets/images/pages/main/виды_работы/img2.webp" alt="Проект 4"
+                                    class="lazy w-full h-96 object-cover rounded-lg">
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition rounded-lg">
                                     <div class="text-white text-center">
                                         <h3 class="text-2xl font-bold mb-2">Спальня</h3>
                                         <p class="mb-4">Площадь: 18 м²</p>
-                                        <button
+                                        <a href=""
                                             class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
                                             Смотреть проект
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1149,9 +1164,9 @@
                 </div>
 
                 <div class="text-center">
-                    <button class="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition">
+                    <a href="" class="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition">
                         Смотреть все проекты
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1168,84 +1183,9 @@
                     </p>
                 </div>
 
-                <div class="swiper swiper-type-2 mx-auto py-10">
-                    <div class="swiper-wrapper">
-                        <!-- 1 -->
-                        <div class="swiper-slide h-[200px]  bg-gray-100 p-6 shadow-lg rounded-lg">
-                            <div class="flex items-center mb-4">
-                                <img class="w-12 h-12 rounded-full object-cover"
-                                    src="https://avatars.mds.yandex.net/i?id=c4b14bde876b77f50f4df0639e6bb21c_sr-9144630-images-thumbs&n=13"
-                                    alt="Анна">
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">Анна</h4>
-                                    <p class="text-sm text-gray-500">ремонт студии</p>
-                                    <div class="text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 line-clamp-3 overflow-hidden">
-                                текст текст текст текст текст текст текст текст текст текст текст текст
-                            </p>
-                        </div>
-                        <!-- 2 -->
-                        <div class="swiper-slide h-[200px] bg-gray-100 p-6 shadow-lg rounded-lg">
-                            <div class="flex items-center mb-4">
-                                <img class="w-12 h-12 rounded-full object-cover"
-                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                                    alt="Сергей">
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">Сергей</h4>
-                                    <p class="text-sm text-gray-500">2-комнатная</p>
-                                    <div class="text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 line-clamp-3 overflow-hidden">
-                                текст текст текст текст текст текст текст текст текст текст текст текст текст текст
-                                текст текст текст
-                                текст текст текст текст текст текст текст текст текст текст текст текст текст текст
-                                текст текст текст
-                                текст текст текст текст текст текст текст текст текст текст текст текст текст текст
-                                текст текст
-                            </p>
-                        </div>
-                        <!-- 3 -->
-                        <div class="swiper-slide h-[200px] bg-gray-100 p-6 shadow-lg rounded-lg">
-                            <div class="flex items-center mb-4">
-                                <img class="w-12 h-12 rounded-full object-cover"
-                                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                                    alt="Елена">
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">Елена</h4>
-                                    <p class="text-sm text-gray-500">новостройка</p>
-                                    <div class="text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 line-clamp-3 overflow-hidden">
-                                текст текст текст текст текст текст текст текст текст текст текст текст текст текст
-                                текст текст текст
-                                текст текст текст
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                <review-lab data-widgetid="69d6a3731ab6330a0b879de7"></review-lab>
+                <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+
             </div>
         </section>
 
@@ -1323,16 +1263,16 @@
                     Оставьте заявку и получите бесплатную консультацию и расчет стоимости
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
+                    <a href="tel:<?php echo $site['phone']; ?>"
                         class="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition transform hover:scale-105">
                         <i class="fas fa-phone mr-2"></i>
                         Оставить заявку
-                    </button>
-                    <button
+                    </a>
+                    <a href="/calculator"
                         class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
                         <i class="fas fa-calculator mr-2"></i>
                         Рассчитать стоимость
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1349,111 +1289,6 @@
     <script src="/public/assets/scripts/main/header.js" defer></script>
     <script src="/public/assets/scripts/components/faq.js" defer></script>
 
-    <!-- <section id="calculator" class="py-16 bg-blue-50 hidden">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          Калькулятор стоимости ремонта
-        </h2>
-        <p class="text-xl text-gray-600">
-          Рассчитайте примерную стоимость вашего проекта
-        </p>
-      </div>
-
-      <div class="max-w-4xl mx-auto bg-white rounded-xl p-8 shadow-lg">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Тип помещения</label>
-              <select
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                <option>Квартира</option>
-                <option>Дом</option>
-                <option>Офис</option>
-                <option>Коммерческое помещение</option>
-              </select>
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Площадь (м²)</label>
-              <input type="number" placeholder="Например: 50"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Количество комнат</label>
-              <input type="number" placeholder="Например: 2"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Ванная комната</label>
-              <select
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                <option>1</option>
-                <option>2</option>
-                <option>3+</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Тип ремонта</label>
-              <div class="space-y-3">
-                <label class="flex items-center">
-                  <input type="radio" name="repair-type" class="mr-3 text-blue-600">
-                  <span>Экономный ремонт</span>
-                </label>
-                <label class="flex items-center">
-                  <input type="radio" name="repair-type" class="mr-3 text-blue-600" checked>
-                  <span>Капитальный ремонт</span>
-                </label>
-                <label class="flex items-center">
-                  <input type="radio" name="repair-type" class="mr-3 text-blue-600">
-                  <span>Дизайнерский ремонт</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-gray-700 font-semibold mb-2">Дополнительные услуги</label>
-              <div class="space-y-2">
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-blue-600">
-                  <span>Дизайн-проект</span>
-                </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-blue-600">
-                  <span>Монтаж сантехники</span>
-                </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-blue-600">
-                  <span>Электромонтажные работы</span>
-                </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-blue-600">
-                  <span>Установка мебели</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-8 p-6 bg-blue-50 rounded-lg">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-gray-600">Примерная стоимость:</div>
-              <div class="text-3xl font-bold text-blue-600">от 150 000 ₽</div>
-            </div>
-            <button class="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition">
-              Получить точный расчет
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 </body>
 
 </html>

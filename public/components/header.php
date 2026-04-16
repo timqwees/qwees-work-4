@@ -1,10 +1,10 @@
 <!-- Header -->
-<header class="bg-white border-b-[1px] border-[#bab9bb80] fixed w-full top-0 z-50">
+<header class="bg-white border-b-[1px] border-[#bab9bb80] fixed w-full top-0 z-[100]">
     <nav class="mx-auto px-6 py-4 lg:py-0">
         <div class="flex justify-between items-center">
             <!-- logo name -->
             <a href="/" class="flex items-center space-x-2">
-                <img class="h-[36px]" src="/public/assets/images/logo/full.svg" alt="">
+                <img class="h-[50px] translate-y-0.5" src="/public/assets/images/logo/full.svg" alt="">
             </a>
 
             <!-- Desktop Navigation -->
@@ -21,16 +21,88 @@
 
                         <div class="flex flex-col border-r border-[#bab9bb80] pr-4">
                             <span class="drop-title">Ремонт помещений</span>
-                            <li><a href="/">Квартирный ремонт</a></li>
-                            <li><a href="/">Ремонт офисов</a></li>
-                            <li><a href="/">Торговых помещений</a></li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
                         </div>
 
                         <div class="flex flex-col border-r border-[#bab9bb80] pr-4">
                             <span class="drop-title">Ремонт помещений</span>
-                            <li><a href="/">Квартирный ремонт</a></li>
-                            <li><a href="/">Ремонт офисов</a></li>
-                            <li><a href="/">Торговых помещений</a></li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-submenu">
+                                <a href="/">
+                                    <i class="fas fa-chevron-right drop-submenu-arrow"></i>
+                                   Квартирный ремонт
+                                </a>
+                                <ul>
+                                    <li><a href="/">Покраска стен</a></li>
+                                    <li><a href="/">Замена плитки</a></li>
+                                    <li><a href="/">Электрика</a></li>
+                                    <li><a href="/">Сантехника</a></li>
+                                    <li><a href="/">Двери и окна</a></li>
+                                </ul>
+                            </li>
                         </div>
 
                         <div class="flex flex-col">
@@ -92,33 +164,35 @@
                     </ul>
                 </div>
                 <!-- Цена -->
-                <a href="#calculator" class="py-6 text-gray-600 hover:text-blue-600 transition">Цена</a>
+                <a href="/prices" class="py-6 text-gray-600 hover:text-blue-600 transition">Цена</a>
                 <!-- Калькулятор -->
-                <a href="#calculator" class="py-6 text-gray-600 hover:text-blue-600 transition">Калькулятор</a>
+                <a href="/calculator" class="py-6 text-gray-600 hover:text-blue-600 transition">Калькулятор</a>
                 <!-- Портфолио -->
-                <a href="#portfolio" class="py-6 text-gray-600 hover:text-blue-600 transition">Портфолио</a>
+                <a href="/portfolio" class="py-6 text-gray-600 hover:text-blue-600 transition">Портфолио</a>
                 <!-- Отзывы -->
                 <a href="/reviews" class="py-6 text-gray-600 hover:text-blue-600 transition">Отзывы</a>
                 <!-- О компании -->
                 <a href="/about" class="py-6 text-gray-600 hover:text-blue-600 transition lg:hidden xl:block">О компании</a>
                 <!-- Контакты -->
                 <a href="/contact" class="py-6 text-gray-600 hover:text-blue-600 transition lg:hidden xl:block">Контакты</a>
+                <!-- Блоги -->
+                <a href="/blogs" class="py-6 text-gray-600 hover:text-blue-600 transition lg:hidden xl:block">Блоги</a>
             </div>
 
             <!-- Desktop Contact -->
             <div class="hidden lg:flex items-stretch items-end gap-6">
                 <div class="flex flex-col justify-center items-center lg:hidden xl:flex">
-                    <a href="tel:+74951234567" class="text-xl font-bold text-gray-800">+7 (495) 123-45-67</a>
+                    <a href="tel:<?= $site['phone']; ?>" class="text-xl font-bold text-gray-800">+7 (495) 123-45-67</a>
                     <p class="text-sm text-gray-600">Ежедневно с 9:00 до 21:00</p>
                 </div>
-                <button class="bg-orange-500 text-white px-6 rounded-lg hover:bg-orange-600 transition py-2">
+                <a href="/calculator" class="flex items-center bg-orange-500 text-white px-6 rounded-lg hover:bg-orange-600 transition py-2">
                     Получить расчет
-                </button>
+                </a>
             </div>
 
             <div class="lg:hidden flex justify-between items-center gap-4">
             <!-- Mobile Menu Button -->
-            <button class="lg:hidden text-sm bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600 transition">
+            <button class="hidden sm:flex text-sm bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600 transition">
                 Получить расчет
             </button>
             <button class="lg:hidden mobile-menu-toggle p-2" aria-label="Открыть меню">
@@ -188,6 +262,10 @@
             <hr>
             <a href="/contact"
                 class="flex justify-between items-center py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Контакты
+                <i class="fa fa-arrow-right"></i>
+            </a>
+            <a href="/blogs"
+                class="flex justify-between items-center py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Блоги
                 <i class="fa fa-arrow-right"></i>
             </a>
         </nav>

@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,28 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Цены на ремонт квартир в Москве | Стоимость от 6 500 ₽/м²</title>
+    <title>Цены на ремонт квартир — прозрачный прайс |
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>
+    </title>
     <meta name="description"
-        content="Актуальные цены на ремонт квартир в Москве. Стоимость от 6 500 ₽/м². Прозрачная смета, без скрытых платежей. Рассчитайте стоимость онлайн.">
-    <meta name="keywords"
-        content="цены на ремонт, стоимость ремонта квартиры, прайс на ремонт, расценки ремонт, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Актуальные цены на ремонт квартир. Полный прайс-лист: от чернового до премиального ремонта. Без скрытых платежей.">
+    <meta name="keywords" content="цены на ремонт, стоимость ремонта, прайс, расценки ремонт квартир">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/prices/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/prices'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Цены на ремонт квартир в Москве | Стоимость от 6 500 ₽/м²">
-    <meta property="og:description"
-        content="Актуальные цены на ремонт квартир в Москве. Прозрачная смета, без скрытых платежей. Рассчитайте стоимость онлайн.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/prices/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-prices.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="Цены на ремонт квартир — прозрачный прайс | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta property="og:description"
+        content="Актуальные цены на ремонт квартир. Полный прайс-лист: от чернового до премиального ремонта.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/prices'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="Цены на ремонт квартир — прозрачный прайс | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta name="twitter:description"
+        content="Актуальные цены на ремонт квартир. Полный прайс-лист: от чернового до премиального ремонта.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
     <meta name="twitter:title" content="Цены на ремонт квартир в Москве | Стоимость от 6 500 ₽/м²">
     <meta name="twitter:description"
         content="Актуальные цены на ремонт квартир в Москве. Прозрачная смета, без скрытых платежей.">
@@ -166,9 +183,9 @@
 
         <!-- 1. hero section -->
         <section
-            class="relative text-white py-12 md:py-20 bg-[url(https://donhaus.ru/wp-content/uploads/2025/09/i-5.webp)] bg-center bg-cover bg-no-repeat">
+            class="relative text-white py-12 md:py-32 bg-[url(https://donhaus.ru/wp-content/uploads/2025/09/i-5.webp)] bg-center bg-cover bg-no-repeat">
             <div
-                class="absolute z-0 top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-r from-[#F5F5F5] via-[#F5F5F5] to-transparent">
+                class="absolute z-0 top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-r from-[#FCFCFC] via-[#F5F5F5] to-transparent">
             </div>
             <div class="relative z-10 container mx-auto px-4">
                 <nav aria-label="breadcrumb" class="mb-4">
@@ -190,13 +207,23 @@
 
                     <!-- CTA Button -->
                     <div class="text-start">
-                        <button
+                        <a href="tel:<?= $site['phone']; ?>"
                             class="cta-button relative bg-orange-500 text-white px-6 md:px-8 py-3 rounded-xl text-lg w-full max-w-xs md:w-auto">
                             <span class="drop-shadow-lg font-sans">Расчитать стомиость</span>
-                        </button>
-                        <p class="text-xs md:text-sm text-gray-600 mt-3">
+                        </a>
+                        <p class="text-xs md:text-sm text-gray-600 mt-6">
                             Ответим за 5 минут • Бесплатно • Без обязательств
                         </p>
+                    </div>
+
+                    <!-- Promo Link -->
+                    <div class="mt-6">
+                        <a href="/stocks"
+                            class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 transition group">
+                            <i class="fas fa-percent text-sm"></i>
+                            <span class="font-medium">Специальные акции и скидки</span>
+                            <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -265,8 +292,8 @@
 
                         <!-- Студия -->
                         <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=300&fit=crop"
-                                alt="Студия" class="w-full h-40 object-cover">
+                            <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="Студия"
+                                class="w-full h-40 object-cover">
                             <div class="p-5">
                                 <div class="flex items-center justify-between mb-2">
                                     <h3 class="font-semibold text-gray-800">Студия</h3>
@@ -283,8 +310,8 @@
                             1</div>
                         <!-- 1 комната -->
                         <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=300&fit=crop"
-                                alt="1 комнатная" class="w-full h-40 object-cover">
+                            <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="1 комнатная"
+                                class="w-full h-40 object-cover">
                             <div class="p-5">
                                 <div class="flex items-center justify-between mb-2">
                                     <h3 class="font-semibold text-gray-800">1 комнатная</h3>
@@ -302,8 +329,8 @@
                     <div class="relative grid grid-cols-1 md:grid-cols-2 gap-2 max-w-5xl mx-auto">
                         <!-- Студия -->
                         <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=300&fit=crop"
-                                alt="Студия" class="w-full h-40 object-cover">
+                            <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="Студия"
+                                class="w-full h-40 object-cover">
                             <div class="p-5">
                                 <div class="flex items-center justify-between mb-2">
                                     <h3 class="font-semibold text-gray-800">Студия</h3>
@@ -320,8 +347,8 @@
                             1</div>
                         <!-- 1 комната -->
                         <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=300&fit=crop"
-                                alt="1 комнатная" class="w-full h-40 object-cover">
+                            <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="1 комнатная"
+                                class="w-full h-40 object-cover">
                             <div class="p-5">
                                 <div class="flex items-center justify-between mb-2">
                                     <h3 class="font-semibold text-gray-800">1 комнатная</h3>
@@ -350,8 +377,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-5xl mx-auto">
                             <!-- Студия -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=300&fit=crop"
-                                    alt="Студия" class="w-full h-40 object-cover">
+                                <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="Студия"
+                                    class="w-full h-40 object-cover">
                                 <div class="p-5">
                                     <div class="flex items-center justify-between mb-2">
                                         <h3 class="font-semibold text-gray-800">Студия</h3>
@@ -368,7 +395,7 @@
                                 1</div>
                             <!-- 1 комната -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=300&fit=crop"
+                                <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png"
                                     alt="1 комнатная" class="w-full h-40 object-cover">
                                 <div class="p-5">
                                     <div class="flex items-center justify-between mb-2">
@@ -390,8 +417,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-5xl mx-auto">
                             <!-- Студия -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=300&fit=crop"
-                                    alt="Студия" class="w-full h-40 object-cover">
+                                <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png" alt="Студия"
+                                    class="w-full h-40 object-cover">
                                 <div class="p-5">
                                     <div class="flex items-center justify-between mb-2">
                                         <h3 class="font-semibold text-gray-800">Студия</h3>
@@ -408,7 +435,7 @@
                             </div>
                             <!-- 1 комната -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=300&fit=crop"
+                                <img src="/public/assets/images/pages/prices/цены_по_типу_обьекта/img.png"
                                     alt="1 комнатная" class="w-full h-40 object-cover">
                                 <div class="p-5">
                                     <div class="flex items-center justify-between mb-2">
@@ -565,36 +592,37 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Скачать прайс в PDF</h3>
                         <p class="text-gray-600 mb-4">Полный перечень работ с актуальными ценами</p>
                         <div class="space-y-3">
-                            <button
+                            <a href="/" download
                                 class="w-full flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                                 <i class="fas fa-file-pdf"></i>
                                 Скачать прайс в PDF
-                            </button>
-                            <button
+                            </a>
+                            <a href="/" download
                                 class="w-full flex items-center justify-center gap-2 bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition">
                                 <i class="fas fa-file-excel"></i>
                                 Прайс-лист цену ремонта
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <!-- Запросить счет ремонта -->
                     <div class="bg-orange-50 rounded-xl p-6 border border-orange-200">
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Запросить счет ремонта</h3>
                         <p class="text-gray-600 mb-4">Получите расчет стоимости ремонта вашей квартиры</p>
-                        <form class="space-y-3">
-                            <input type="tel" placeholder="+7 (___) ___-__-__"
+                        <form action="/send/email" method="POST" class="space-y-3">
+                            <input type="hidden" name="Запросили счет ремонта" value="">
+                            <input name="телефон" type="tel" placeholder="+7 (___) ___-__-__"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none">
                             <div class="flex items-center gap-4 text-xs text-gray-500">
                                 <label class="flex items-center gap-2">
-                                    <input type="checkbox" class="rounded">
+                                    <input name="+Рассрочка" type="checkbox" class="rounded">
                                     Рассрочка
                                 </label>
                                 <label class="flex items-center gap-2">
-                                    <input type="checkbox" class="rounded">
+                                    <input name="+Финансирование" type="checkbox" class="rounded">
                                     Финансирование
                                 </label>
                                 <label class="flex items-center gap-2">
-                                    <input type="checkbox" class="rounded">
+                                    <input name="+Военная ипотека" type="checkbox" class="rounded">
                                     Военная ипотека
                                 </label>
                             </div>
@@ -685,14 +713,15 @@
                     Мы готовы выполнить свою оценку — оставьте заявку на бесплатный расчет стоимости ремонта.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto mb-8">
-                    <input type="tel" placeholder="+7 (___) ___-__-__"
+                <form accept="/send/email" class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto mb-8">
+                    <input type="hidden" name="Получить расчет" value="">
+                    <input name="телефон" type="tel" placeholder="+7 (___) ___-__-__"
                         class="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
                     <button
                         class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition">
                         Получить расчет
                     </button>
-                </div>
+                </form>
 
                 <ol class="w-fit grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                     <li class="flex items-center justify-start gap-2">

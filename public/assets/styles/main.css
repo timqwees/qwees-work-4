@@ -1,4 +1,13 @@
 /* Main Styles - Основные стили сайта */
+::-webkit-scrollbar-thumb {
+    background: #F2760A;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    scroll-behavior: smooth;
+}
 
 /* Custom gradient backgrounds */
 .gradient-primary {
@@ -7,6 +16,27 @@
 
 .gradient-secondary {
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Swiper custom styles */
@@ -90,12 +120,12 @@ html {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    transition: width 0.6s;
 }
 
 .cta-button:hover::before {
-    width: 100%;
-    height: 300px;
+    width: 300%;
+    aspect-ratio: 1;
 }
 
 .cta-button:active {
@@ -294,84 +324,85 @@ html {
 
 /* аккордеон - контейнер подменю */
 .drop-submenu {
-  position: relative;
+    position: relative;
 }
 
 /* аккордеон - кнопка */
-.drop-submenu > a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.drop-submenu>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 /* аккордеон - стрелка */
 .drop-submenu-arrow {
-  font-size: 8px;
-  transition: transform 0.3s ease;
-  opacity: 0.7;
+    font-size: 8px;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
 }
 
 /* аккордеон - поворот стрелки при наведении */
 .drop-submenu:hover .drop-submenu-arrow {
-  transform: rotate(90deg);
-  opacity: 1;
+    transform: rotate(90deg);
+    opacity: 1;
 }
 
 /* аккордеон - список подменю */
 .drop-submenu ul {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  position: absolute;
-  list-style: none;
-  padding: 0;
-  border: none;
-  left: 100%;
-  top: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    border: none;
+    left: 100%;
+    top: 0;
 }
 
 /* аккордеон - раскрытие списка при наведении */
 .drop-submenu:hover ul {
-  max-height: 500px;
-  border-width: 1px;
-  border-color: #bab9bb #bab9bb80 #bab9bb80;
-  border-style: solid;
-  padding: 10px;
-  background-color: white;
+    max-height: 500px;
+    border-width: 1px;
+    border-color: #bab9bb #bab9bb80 #bab9bb80;
+    border-style: solid;
+    padding: 10px;
+    background-color: white;
+    z-index: 50;
 }
 
 /* аккордеон - подсветка родительской ссылки при открытом подменю */
-.drop-submenu:hover > a {
-  color: #2563eb;
-  /* border: 1px solid #2563eb; */
-  border-radius: 4px;
+.drop-submenu:hover>a {
+    color: #2563eb;
+    /* border: 1px solid #2563eb; */
+    border-radius: 4px;
 }
 
 /* аккордеон - ссылки в подменю */
 .drop-submenu ul li a {
-  display: flex;
-  align-items: center;
-  padding: 4px 8px;
-  color: #6b7280;
-  text-decoration: none;
-  font-size: 13px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 /* аккордеон - hover эффект ссылок */
 .drop-submenu ul li a:hover {
-  color: #2563eb;
-  padding-left: 12px;
-  border: 1px solid #2563eb;
-  border-radius: 4px;
+    color: #2563eb;
+    padding-left: 12px;
+    border: 1px solid #2563eb;
+    border-radius: 4px;
 }
 
 /* аккордеон - иконки в ссылках */
 .drop-submenu ul li a i {
-  margin-right: 6px;
-  font-size: 12px;
-  width: 14px;
-  text-align: center;
+    margin-right: 6px;
+    font-size: 12px;
+    width: 14px;
+    text-align: center;
 }

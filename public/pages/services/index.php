@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,29 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Ремонт однокомнатной квартиры под ключ в Москве | от 13 000 ₽/м²</title>
+    <title>Услуги ремонта квартир — полный спектр |
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>
+    </title>
     <meta name="description"
-        content="Профессиональный ремонт однокомнатных квартир под ключ в Москве. Стоимость от 13 000 ₽/м². Гарантия 3 года. Работаем по договору.">
-    <meta name="keywords"
-        content="ремонт однокомнатной квартиры, ремонт 1 комнатной квартиры, ремонт однушки, ремонт под ключ, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Полный спектр услуг по ремонту квартир: дизайн-проект, черновой и чистовой ремонт, электрика, сантехника, отделка. Гарантия качества.">
+    <meta name="keywords" content="услуги ремонта, ремонт квартир, дизайн проект, электрика, сантехника, отделка">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/services/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/services'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Ремонт однокомнатной квартиры под ключ в Москве | от 13 000 ₽/м²">
-    <meta property="og:description"
-        content="Профессиональный ремонт однокомнатных квартир под ключ в Москве. Стоимость от 13 000 ₽/м². Гарантия 3 года.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/services/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-image.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="Услуги ремонта квартир — полный спектр | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta property="og:description"
+        content="Полный спектр услуг по ремонту квартир: дизайн-проект, черновой и чистовой ремонт, электрика, сантехника, отделка.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/services'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ремонт однокомнатной квартиры под ключ в Москве | от 13 000 ₽/м²">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="Услуги ремонта квартир — полный спектр | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta name="twitter:description"
+        content="Полный спектр услуг по ремонту квартир: дизайн-проект, черновой и чистовой ремонт, электрика, сантехника, отделка.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
     <meta name="twitter:description"
         content="Профессиональный ремонт однокомнатных квартир под ключ в Москве. Стоимость от 13 000 ₽/м². Гарантия 3 года.">
     <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-image.jpg">
@@ -244,7 +260,7 @@
             <div
                 class="absolute z-0 top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-r from-[#F5F5F5] via-[#F5F5F5] to-transparent">
             </div>
-            <div class="relative z-10 mx-auto px-4">
+            <div class="max-w-7xl relative z-10 mx-auto px-4">
                 <nav aria-label="breadcrumb" class="mb-4">
                     <ol class="flex flex-wrap items-center gap-2 text-sm text-gray-600">
                         <li class="text-gray-900 font-medium"><a href="/"
@@ -574,7 +590,7 @@
                 <!-- title -->
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                        Калькулятор цены работы 
+                        Калькулятор цены работы
                     </h2>
                     <p class="text-gray-600">Заполните форму ниже и получите точный расчет за 5 минут</p>
                 </div>

@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,28 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Отзывы клиентов | Ремонт квартир и домов под ключ</title>
+    <title>Отзывы клиентов — реальные мнения |
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>
+    </title>
     <meta name="description"
-        content="Отзывы клиентов о ремонте квартир и домов под ключ. Реальные мнения, рейтинг 5,0/5, примеры выполненных работ. Москва и область.">
-    <meta name="keywords" content="отзывы, отзывы клиентов, ремонт квартир, ремонт под ключ, ремонт домов, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Отзывы клиентов о ремонте квартир. Рейтинг 5.0/5, реальные фото и видео отзывы, проверенные заказчики.">
+    <meta name="keywords" content="отзывы, отзывы о ремонте, рейтинг ремонт, мнения клиентов">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/reviews/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/reviews'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Отзывы клиентов | Ремонт квартир и домов под ключ">
-    <meta property="og:description"
-        content="Отзывы клиентов о ремонте квартир и домов под ключ. Реальные мнения, рейтинг 5,0/5, примеры выполненных работ. Москва и область.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/reviews/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-image.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="Отзывы клиентов — реальные мнения | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta property="og:description"
+        content="Отзывы клиентов о ремонте квартир. Рейтинг 5.0/5, реальные фото и видео отзывы.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/reviews'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Отзывы клиентов | Ремонт квартир и домов под ключ">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="Отзывы клиентов — реальные мнения | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta name="twitter:description"
+        content="Отзывы клиентов о ремонте квартир. Рейтинг 5.0/5, реальные фото и видео отзывы.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
     <meta name="twitter:description"
         content="Отзывы клиентов о ремонте квартир и домов под ключ. Реальные мнения, рейтинг 5,0/5, примеры выполненных работ. Москва и область.">
     <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-image.jpg">
@@ -277,7 +294,8 @@
                                         <i class="fas fa-thumbs-up text-orange-500 text-xl w-6"></i>
                                         <div class="flex items-center gap-3">
                                             <span class="text-2xl font-extrabold text-gray-900">100%</span>
-                                            <span class="text-gray-600 md:text-xl">рекомендовали нас близким и знакомым</span>
+                                            <span class="text-gray-600 md:text-xl">рекомендовали нас близким и
+                                                знакомым</span>
                                         </div>
                                     </div>
                                 </div>
@@ -285,7 +303,7 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center mt-6">
-                        <a href="/order"
+                        <a href="tel:<?php echo $site['phone']; ?>"
                             class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold shadow hover:from-orange-600 hover:to-orange-700 transition">
                             Оставить заявку на ремонт
                         </a>
@@ -306,59 +324,6 @@
             </div>
         </section>
 
-        <!-- <section class="bg-gray-50 pb-12">
-            <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Видеоотзывы</h2>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div
-                            class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-                            <div class="text-lg font-bold text-gray-900">Яндекс</div>
-                            <div class="mt-1 text-sm text-gray-700">5,0/5</div>
-                            <div class="mt-2 flex items-center gap-1 text-orange-500 text-sm">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-                            <div class="text-lg font-bold text-gray-900">Google</div>
-                            <div class="mt-1 text-sm text-gray-700">5,0/5</div>
-                            <div class="mt-2 flex items-center gap-1 text-orange-500 text-sm">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-                            <div class="text-lg font-bold text-gray-900">2ГИС</div>
-                            <div class="mt-1 text-sm text-gray-700">5,0/5</div>
-                            <div class="mt-2 flex items-center gap-1 text-orange-500 text-sm">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-                            <div class="text-lg font-bold text-gray-900">Отзовик</div>
-                            <div class="mt-1 text-sm text-gray-700">5,0/5</div>
-                            <div class="mt-2 flex items-center gap-1 text-orange-500 text-sm">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                        <a href="#" class="text-sm text-blue-700 hover:text-blue-800">Все видеоотзывы клиентов &gt;</a>
-                        <a href="#" class="text-sm text-blue-700 hover:text-blue-800">Читать все отзывы о нашей работе
-                            на сервисах (107) &gt;</a>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
         <section class="pb-12">
             <div class="container mx-auto px-4">
                 <div class="max-w-6xl mx-auto">
@@ -366,8 +331,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                            <img class="w-full h-44 object-cover"
-                                src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&h=500&fit=crop"
+                            <img class="w-full h-44 object-cover" src="/public/assets/images/pages/reviews/img.png"
                                 alt="Проект 1">
                             <div class="p-4">
                                 <div class="font-semibold text-center text-gray-900">Виктор Андреев</div>
@@ -377,8 +341,7 @@
                             </div>
                         </div>
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                            <img class="w-full h-44 object-cover"
-                                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop"
+                            <img class="w-full h-44 object-cover" src="/public/assets/images/pages/reviews/img.png"
                                 alt="Проект 2">
                             <div class="p-4">
                                 <div class="font-semibold text-center text-gray-900">Ольга и Антон Никифоровы</div>
@@ -388,8 +351,7 @@
                             </div>
                         </div>
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                            <img class="w-full h-44 object-cover"
-                                src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&h=500&fit=crop"
+                            <img class="w-full h-44 object-cover" src="/public/assets/images/pages/reviews/img.png"
                                 alt="Проект 3">
                             <div class="p-4">
                                 <div class="font-semibold text-center text-gray-900">Елена Сергеева</div>
@@ -410,7 +372,7 @@
                         <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Готовы обсудить стоимость вашего
                             ремонта?</h2>
                         <p class="mt-2 text-gray-600">Оставьте заявку, обсудим проект, сориентируем по цене и срокам</p>
-                        <a href="/order"
+                        <a href="tel:<?= $site['phone']; ?>"
                             class="mt-6 inline-flex items-center justify-center px-10 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold shadow hover:from-orange-600 hover:to-orange-700 transition">
                             Оставить заявку
                         </a>

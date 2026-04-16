@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,32 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Акции и скидки на ремонт квартир | Выгодные предложения</title>
+    <title>О компании
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ
+    </title>
     <meta name="description"
-        content="Акции и скидки на ремонт квартир и домов под ключ в Москве. Выгодные предложения, бесплатный дизайн-проект, сезонные скидки до 20%.">
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — профессиональный ремонт квартир и домов под ключ. Опыт работы более 10 лет, гарантия качества, прозрачные цены.">
     <meta name="keywords"
-        content="акции, скидки, ремонт квартир, ремонт под ключ, выгодные предложения, Москва, скидка на ремонт">
-    <meta name="author" content="Ваша компания">
+        content="о компании, ремонт квартир, <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>, ремонт под ключ, строительная компания">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/stocks/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/about'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Акции и скидки на ремонт квартир | Выгодные предложения">
-    <meta property="og:description"
-        content="Акции и скидки на ремонт квартир и домов под ключ в Москве. Выгодные предложения, бесплатный дизайн-проект, сезонные скидки до 20%.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/stocks/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-stocks.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="О компании <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ">
+    <meta property="og:description"
+        content="Профессиональный ремонт квартир и домов под ключ. Опыт работы более 10 лет, гарантия качества.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/about'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Акции и скидки на ремонт квартир | Выгодные предложения">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="О компании <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — ремонт квартир под ключ">
     <meta name="twitter:description"
-        content="Акции и скидки на ремонт квартир и домов под ключ в Москве. Выгодные предложения, бесплатный дизайн-проект, сезонные скидки до 20%.">
-    <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-stocks.jpg">
+        content="Профессиональный ремонт квартир и домов под ключ. Опыт работы более 10 лет, гарантия качества.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
 
     <!-- Дополнительные мета-теги -->
     <meta name="theme-color" content="#FF6B35">
@@ -220,7 +234,7 @@
                     <div class="flex flex-col md:flex-row gap-8 items-stretch justify-stretch">
                         <!-- Left: Image -->
                         <div class="relative flex-1">
-                            <img src="https://topkoder.ru/wp-content/uploads/2025/11/p4p45pr4r5.jpg" alt="Наша команда"
+                            <img src="/public/assets/images/pages/about/img.png" alt="Наша команда"
                                 class="rounded-lg object-cover w-full h-full">
                         </div>
 
@@ -330,11 +344,11 @@
 
                         <!-- Right: Button -->
                         <div class="w-full md:w-1/3 flex justify-end">
-                            <button
+                            <a href="tel:<?= $site['phone']; ?>"
                                 class="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition inline-flex items-center justify-center gap-2">
                                 Получить консультацию
                                 <i class="fas fa-arrow-right"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -361,8 +375,7 @@
                         <!-- Team Member 1 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=250&fit=crop"
-                                    alt="Андрей Смирнов"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Андрей Смирнов"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Андрей Смирнов</h3>
@@ -372,8 +385,7 @@
                         <!-- Team Member 2 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=250&fit=crop"
-                                    alt="Екатерина Полянова"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Екатерина Полянова"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Екатерина Полянова</h3>
@@ -383,8 +395,7 @@
                         <!-- Team Member 3 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=250&fit=crop"
-                                    alt="Дмитрий Соколов"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Дмитрий Соколов"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Дмитрий Соколов</h3>
@@ -394,8 +405,7 @@
                         <!-- Team Member 4 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=250&fit=crop"
-                                    alt="Алексей Иванов"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Алексей Иванов"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Алексей Иванов</h3>
@@ -405,8 +415,7 @@
                         <!-- Team Member 5 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=250&fit=crop"
-                                    alt="Ирина Петрова"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Ирина Петрова"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Ирина Петрова</h3>
@@ -416,8 +425,7 @@
                         <!-- Team Member 5 -->
                         <div class="swiper-slide cursor-pointer text-center group">
                             <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=250&fit=crop"
-                                    alt="Ирина Петрова"
+                                <img src="public/assets/images/pages/about/сотрудники/img.avif" alt="Ирина Петрова"
                                     class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                             </div>
                             <h3 class="font-semibold text-gray-800 text-sm">Ирина Петрова</h3>
@@ -452,7 +460,7 @@
                     <!-- Showroom Card 1 -->
                     <div class="bg-gray-50 rounded-xl overflow-hidden">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&h=400&fit=crop"
+                            <img src="public/assets/images/pages/about/Как_мы_контролируем_качество/img.jpg"
                                 alt="Шоурум" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
@@ -472,7 +480,7 @@
                     <!-- Showroom Card 2 -->
                     <div class="bg-gray-50 rounded-xl overflow-hidden">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop"
+                            <img src="public/assets/images/pages/about/Как_мы_контролируем_качество/img.jpg"
                                 alt="Шоурум" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
@@ -549,8 +557,8 @@
 
                     <!-- Documents Images -->
                     <div class="flex justify-center items-center">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&h=300&fit=crop"
-                            alt="Документы" class="w-full max-w-md rounded-lg shadow-lg">
+                        <img src="public/assets/images/pages/about/договор.jpg" alt="Документы"
+                            class="w-full max-w-md rounded-lg shadow-lg">
                     </div>
                 </div>
             </div>

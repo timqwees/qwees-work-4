@@ -1,3 +1,4 @@
+<?php $site = Setting\Route\Function\Functions::site(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,31 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>Ремонт квартир и домов под ключ | Профессиональные услуги</title>
+    <title>Контакты — связаться с нами |
+        <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>
+    </title>
     <meta name="description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
-    <meta name="keywords" content="ремонт квартир, ремонт под ключ, ремонт домов, отделка, строительные услуги, Москва">
-    <meta name="author" content="Ваша компания">
+        content="Контакты <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>. Телефон, адрес, WhatsApp, Telegram. Бесплатная консультация и выезд на объект.">
+    <meta name="keywords" content="контакты, телефон, адрес, связаться, ремонт квартир">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pkvartira.ru/contact/">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="content-language" content="ru">
+    <link rel="canonical"
+        href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/contact'); ?>">
 
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Ремонт квартир и домов под ключ | Профессиональные услуги">
-    <meta property="og:description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pkvartira.ru/contact/">
-    <meta property="og:image" content="https://pkvartira.ru/images/og-image.jpg">
-    <meta property="og:site_name" content="Ваша компания">
+    <meta property="og:title"
+        content="Контакты — связаться с нами | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
+    <meta property="og:description"
+        content="Контакты <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>. Телефон, адрес, WhatsApp, Telegram. Бесплатная консультация.">
+    <meta property="og:url"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/contact'); ?>">
+    <meta property="og:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta property="og:site_name"
+        content="<?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?> — Ремонт квартир под ключ">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ремонт квартир и домов под ключ | Профессиональные услуги">
+    <meta name="twitter:site" content="@pkvartira">
+    <meta name="twitter:title"
+        content="Контакты — связаться с нами | <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>">
     <meta name="twitter:description"
-        content="Профессиональный ремонт квартир и домов под ключ. Современные решения, гарантия качества, опытные мастера.">
-    <meta name="twitter:image" content="https://pkvartira.ru/images/twitter-image.jpg">
+        content="Контакты <?= htmlspecialchars($site['name'] ?? 'ПКвартира'); ?>. Телефон, адрес, WhatsApp, Telegram. Бесплатная консультация.">
+    <meta name="twitter:image"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>/public/assets/images/logo/favicon/favicon-96x96.png">
+    <meta name="twitter:creator" content="@pkvartira">
+    <meta name="twitter:domain"
+        content="<?= htmlspecialchars((isset($_SERVER['HTTP_HOST']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] : 'https://pkvartira.ru')); ?>">
 
     <!-- Дополнительные мета-теги -->
     <meta name="theme-color" content="#FF6B35">
@@ -259,10 +273,10 @@
                             </h2>
                             <p class="text-gray-700 text-lg mb-2">Москва, ул. Примерная, д. 5, офис 45</p>
                             <p class="text-gray-600 mb-4">ЖК "Пример Парк", 5 минут от метро "Примерная"</p>
-                            <button
+                            <a href="tel:<?= $site['phone']; ?>"
                                 class="cta-button bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition">
                                 Записаться на визит
-                            </button>
+                            </a>
                         </div>
 
                         <!-- Map -->
@@ -277,10 +291,10 @@
                             <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                                 <i class="fas fa-phone-alt text-blue-600 mr-3"></i>+7 (495) 123-45-67
                             </h2>
-                            <button
+                            <a href="tel:<?= $site['phone']; ?>"
                                 class="cta-button bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
                                 Позвонить нам
-                            </button>
+                            </a>
                         </div>
 
                         <!-- Messengers -->
@@ -289,14 +303,19 @@
                                 <i class="fas fa-comment-dots text-blue-600 mr-3"></i>Мессенджеры
                             </h2>
                             <div class="flex space-x-4 mb-3">
-                                <a href="#" class="text-blue-500 hover:text-blue-700 text-4xl"><i
+                                <a href="<?= $site['telegram']; ?>"
+                                    class="text-blue-500 hover:text-blue-700 text-4xl"><i
                                         class="fab fa-telegram"></i></a>
-                                <a href="#" class="text-green-500 hover:text-green-700 text-4xl"><i
+                                <a href="<?= $site['whatsapp']; ?>"
+                                    class="text-green-500 hover:text-green-700 text-4xl"><i
                                         class="fab fa-whatsapp"></i></a>
-                                <a href="#" class="text-purple-500 hover:text-purple-700 text-4xl"><i
-                                        class="fab fa-viber"></i></a>
+                                <a href="<?= $site['max'] ?>"
+                                    class="flex items-center text-gray-600 hover:text-blue-600 transition">
+                                    <img class="h-9 w-9" src="/public/assets/images/icons/MAX.svg" alt="Logo Max">
+                                </a>
                             </div>
-                            <a href="#" class="text-blue-600 hover:underline">Написать нам ></a>
+                            <a href="mailto:<?php echo $site['email']; ?>"
+                                class="text-blue-600 hover:underline">Написать нам</a>
                         </div>
 
                         <!-- Company Details -->
@@ -316,27 +335,27 @@
                     <!-- Right Column -->
                     <div>
                         <!-- Contact Form -->
-                        <div class="bg-white rounded-xl shadow-lg p-8">
+                        <div class="bg-white border rounded-xl p-8">
                             <h2 class="text-3xl font-bold text-gray-800 mb-6">Оставить заявку</h2>
-                            <form class="space-y-4">
+                            <form action="/send/email" method="POST" class="space-y-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Ваше имя *</label>
-                                    <input type="text" required
+                                    <input name="имя" type="text" required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Телефон *</label>
-                                    <input type="tel" required
+                                    <input name="телефон" type="tel" required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Email</label>
-                                    <input type="email"
+                                    <input name="почта" type="email"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Тип ремонта</label>
-                                    <select
+                                    <select name="тип ремонта"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                         <option>Ремонт под ключ</option>
                                         <option>Черновой ремонт</option>
@@ -347,16 +366,16 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Площадь (м²)</label>
-                                    <input type="number"
+                                    <input name="площадь" type="number"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Сообщение</label>
-                                    <textarea rows="4"
+                                    <textarea name="сообщение" rows="4"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
                                 </div>
                                 <div class="flex items-center mb-4">
-                                    <input type="checkbox" id="privacy" class="mr-2">
+                                    <input type="checkbox" id="privacy" class="mr-2" required>
                                     <label for="privacy" class="text-gray-600 text-sm">
                                         Согласен с <a href="#" class="text-blue-600 hover:underline">политикой
                                             конфиденциальности</a>
@@ -404,16 +423,16 @@
                     Наши специалисты готовы проконсультировать вас по любым вопросам
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
+                    <a href="tel:<?= $site['phone']; ?>"
                         class="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition">
                         <i class="fas fa-phone mr-2"></i>
                         Позвонить нам
-                    </button>
-                    <button
+                    </a>
+                    <a href="mailto:<?php echo $site['email']; ?>?cc=<?php echo $site['email']; ?>&body=Здравствуйте, хотели бы получить консультацию по вашим услугам"
                         class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
                         <i class="fas fa-envelope mr-2"></i>
                         Написать письмо
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

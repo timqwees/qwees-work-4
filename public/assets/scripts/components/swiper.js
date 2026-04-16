@@ -9,7 +9,7 @@ $(document).ready(() => {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 30,
-                speed: 500,
+                speed: 1000,
                 autoplay: { delay: 4000, disableOnInteraction: false },
                 pagination: { el: '.swiper-pagination', clickable: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -23,7 +23,7 @@ $(document).ready(() => {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 30,
-                speed: 500,
+                speed: 1000,
                 autoplay: { delay: 2000, disableOnInteraction: false },
                 pagination: { el: '.swiper-pagination', clickable: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -37,7 +37,7 @@ $(document).ready(() => {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 30,
-                speed: 500,
+                speed: 1000,
                 autoplay: { delay: 5000, disableOnInteraction: false },
                 pagination: { el: '.swiper-pagination', clickable: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -51,7 +51,7 @@ $(document).ready(() => {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 30,
-                speed: 500,
+                speed: 1000,
                 autoplay: { delay: 4000, disableOnInteraction: false },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
                 breakpoints: { 640: { slidesPerView: 2 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
@@ -88,7 +88,7 @@ $(document).ready(() => {
                 speed: 1000,
                 autoplay: { delay: 2000, disableOnInteraction: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                breakpoints: { 640: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }
+                breakpoints: { 320: { slidesPerView: 2 }, 480: { slidesPerView: 3 }, 640: { slidesPerView: 4 }, 768: { slidesPerView: 5 }, 1024: { slidesPerView: 6 } }
             });
         });
         
